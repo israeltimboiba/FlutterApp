@@ -69,8 +69,8 @@ class Turma with Ano {
 
 class Historico extends Turma {
   Map<Aluno, List<double>> notas = {};
-  Historico(Disciplina disciplina, Professor professor, int ano) 
-  : super(disciplina, professor, ano);
+  Historico(Disciplina disciplina, Professor professor, int ano)
+    : super(disciplina, professor, ano);
 
   @override
   void matricular(Aluno aluno) {
@@ -79,15 +79,15 @@ class Historico extends Turma {
   }
 
   double media(Aluno aluno) {
-  var notasAluno = notas[aluno]!;
-  if (notasAluno.isEmpty) return 0.0;
+    var notasAluno = notas[aluno]!;
+    if (notasAluno.isEmpty) return 0.0;
 
-  double soma = 0;
-  for (double nota in notasAluno) {
-    soma += nota;
+    double soma = 0;
+    for (double nota in notasAluno) {
+      soma += nota;
+    }
+    return soma / notasAluno.length;
   }
-  return soma / notasAluno.length;
-}
 
   bool isAprovado(Aluno aluno) {
     return media(aluno) >= 6.0;
