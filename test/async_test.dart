@@ -29,23 +29,18 @@ Stream<int> count() async* {
 
 
 Stream<double> media(List<String> nomes) async* {
-  for (String nome in nomes) {
-    try {
-      List<double>? notas = await search(nome);
-      if (notas != null) {
-        double soma = 0;
-        for (double nota in notas) {
-          soma += nota;
-        }
-        yield soma / notas.length;
-      }
-    } catch (e) {
-      // Ignora o erro e continua com os próximos nomes
-      print('Erro ao buscar notas de $nome: $e');
-    }
-  }
+ for (String nome in nomes) {
+   List<double>? notas = await search(nome);
+   double media = 0.0;
+   if (notas!.isNotEmpty) {
+     for (double nota in notas) {
+       media += nota;
+     }
+     media /= notas.length;
+   }
+   yield media;
+ }
 }
-
 
 void main() {
  group('Testes de programação assíncrona', () {
